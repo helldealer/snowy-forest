@@ -1,4 +1,4 @@
-package trees
+package loser
 
 import (
 	"github.com/stretchr/testify/require"
@@ -7,14 +7,14 @@ import (
 
 type elem int
 
-func (e elem) Lose(LoserElem LoserElem) bool {
+func (e elem) Lose(LoserElem Elem) bool {
 	return e >= LoserElem.(elem)
 }
 
-var initLoserElem = []LoserElem{elem(-2), elem(6), elem(3), elem(-1), elem(1), elem(5), elem(4)}
+var initLoserElem = []Elem{elem(-2), elem(6), elem(3), elem(-1), elem(1), elem(5), elem(4)}
 
 func TestLoser(t *testing.T) {
-	loser := NewLoser(initLoserElem, elem(-10))
+	loser := New(initLoserElem, elem(-10))
 	require.Equal(t, loser.r[0], 0)
 	require.Equal(t, loser.p[loser.r[0]], elem(-2))
 
